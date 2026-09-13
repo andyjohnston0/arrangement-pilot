@@ -74,3 +74,10 @@ Create a JSON file in `blueprints/<genre>/your_style.json` following this schema
   ]
 }
 ```
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
