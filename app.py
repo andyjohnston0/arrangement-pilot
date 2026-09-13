@@ -1,10 +1,40 @@
 import io
+import os
+import time
 from pathlib import Path
 from flask import Flask, render_template, request, jsonify, send_file
 from engine.blueprint_loader import list_blueprints, get_blueprint, get_genres
 from engine.als_generator import generate_als
 
 app = Flask(__name__)
+
+EXPORTS_DIR = Path(__file__).parent / "exports"
+MAX_EXPORTS = 5
+
+def save_and_rotate_export(filename: str, als_data: bytes) -> Path:
+    """Save generated ALS to exports folder and retain only the latest MAX_EXPORTS files."""
+    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    target_path = EXPORTS_DIR / filename
+
+    with open(target_path, "wb") as f:
+        f.write(als_data)
+
+    # Sort all .als files in exports/ by modification time (oldest first)
+    als_files = sorted(
+        [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
+        key=lambda p: p.stat().st_mtime
+    )
+
+    # Remove oldest until count <= MAX_EXPORTS
+    while len(als_files) > MAX_EXPORTS:
+        oldest = als_files.pop(0)
+        try:
+            oldest.unlink()
+            print(f"[Rotation] Removed oldest export: {oldest.name}")
+        except Exception as e:
+            print(f"[Rotation] Error removing {oldest.name}: {e}")
+
+    return target_path
 
 @app.route("/")
 def index():
@@ -24,6 +54,29 @@ def api_blueprint_detail(blueprint_id):
     if bp is None:
         return jsonify({"error": "Blueprint not found"}), 404
     return jsonify(bp)
+
+@app.route("/api/exports", methods=["GET"])
+def api_list_exports():
+    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    files = sorted(
+        [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
+        key=lambda p: p.stat().st_mtime,
+        reverse=True
+    )
+    return jsonify([{
+        "name": p.name,
+        "size_kb": round(p.stat().st_size / 1024, 1),
+        "mtime": p.stat().st_mtime
+    } for p in files])
+
+@app.route("/api/open_exports", methods=["POST"])
+def api_open_exports():
+    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        os.startfile(str(EXPORTS_DIR))
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/api/generate", methods=["POST"])
 def api_generate():
@@ -55,7 +108,11 @@ def api_generate():
         return jsonify({"error": f"Failed to generate ALS: {str(e)}"}), 500
 
     safe_name = bp.get("id", "arrangement").replace(" ", "_")
-    filename = f"{safe_name}_{int(bpm_override or bp.get('bpm', 130))}bpm.als"
+    bpm_val = int(bpm_override or bp.get("bpm", 130))
+    filename = f"{safe_name}_{bpm_val}bpm.als"
+
+    # Automatically save to exports/ folder and rotate oldest when > 5
+    save_and_rotate_export(filename, als_data)
 
     return send_file(
         io.BytesIO(als_data),

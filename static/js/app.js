@@ -141,6 +141,17 @@ function setupEventListeners() {
   if (loadTemplateBtn) {
     loadTemplateBtn.addEventListener('click', handleLoadTemplateExample);
   }
+
+  const openExportsBtn = document.getElementById('openExportsBtn');
+  if (openExportsBtn) {
+    openExportsBtn.addEventListener('click', async () => {
+      try {
+        await fetch('/api/open_exports', { method: 'POST' });
+      } catch (err) {
+        console.error('Failed to open exports folder:', err);
+      }
+    });
+  }
 }
 
 // --- Data Fetching ---
