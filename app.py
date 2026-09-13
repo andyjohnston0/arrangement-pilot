@@ -8,33 +8,36 @@ from engine.als_generator import generate_als
 
 app = Flask(__name__)
 
-EXPORTS_DIR = Path(__file__).parent / "exports"
+# Check if running in a cloud/serverless environment (like Vercel)
+IS_VERCEL = bool(os.environ.get("VERCEL") or os.environ.get("NOW_REGION"))
+EXPORTS_DIR = Path("/tmp/exports") if IS_VERCEL else (Path(__file__).parent / "exports")
 MAX_EXPORTS = 5
 
-def save_and_rotate_export(filename: str, als_data: bytes) -> Path:
+def save_and_rotate_export(filename: str, als_data: bytes):
     """Save generated ALS to exports folder and retain only the latest MAX_EXPORTS files."""
-    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    target_path = EXPORTS_DIR / filename
+    try:
+        EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+        target_path = EXPORTS_DIR / filename
 
-    with open(target_path, "wb") as f:
-        f.write(als_data)
+        with open(target_path, "wb") as f:
+            f.write(als_data)
 
-    # Sort all .als files in exports/ by modification time (oldest first)
-    als_files = sorted(
-        [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
-        key=lambda p: p.stat().st_mtime
-    )
+        # Sort all .als files in exports/ by modification time (oldest first)
+        als_files = sorted(
+            [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
+            key=lambda p: p.stat().st_mtime
+        )
 
-    # Remove oldest until count <= MAX_EXPORTS
-    while len(als_files) > MAX_EXPORTS:
-        oldest = als_files.pop(0)
-        try:
-            oldest.unlink()
-            print(f"[Rotation] Removed oldest export: {oldest.name}")
-        except Exception as e:
-            print(f"[Rotation] Error removing {oldest.name}: {e}")
-
-    return target_path
+        # Remove oldest until count <= MAX_EXPORTS
+        while len(als_files) > MAX_EXPORTS:
+            oldest = als_files.pop(0)
+            try:
+                oldest.unlink()
+            except Exception as e:
+                print(f"[Rotation] Error removing {oldest.name}: {e}")
+    except Exception as e:
+        # In strictly read-only serverless cloud runtimes, streaming still works
+        print(f"[Export Cache] Skipped local disk write: {e}")
 
 @app.route("/")
 def index():
@@ -57,26 +60,31 @@ def api_blueprint_detail(blueprint_id):
 
 @app.route("/api/exports", methods=["GET"])
 def api_list_exports():
-    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    files = sorted(
-        [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
-        key=lambda p: p.stat().st_mtime,
-        reverse=True
-    )
-    return jsonify([{
-        "name": p.name,
-        "size_kb": round(p.stat().st_size / 1024, 1),
-        "mtime": p.stat().st_mtime
-    } for p in files])
+    try:
+        EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+        files = sorted(
+            [p for p in EXPORTS_DIR.glob("*.als") if p.is_file()],
+            key=lambda p: p.stat().st_mtime,
+            reverse=True
+        )
+        return jsonify([{
+            "name": p.name,
+            "size_kb": round(p.stat().st_size / 1024, 1),
+            "mtime": p.stat().st_mtime
+        } for p in files])
+    except Exception:
+        return jsonify([])
 
 @app.route("/api/open_exports", methods=["POST"])
 def api_open_exports():
-    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    try:
-        os.startfile(str(EXPORTS_DIR))
-        return jsonify({"success": True})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    if hasattr(os, "startfile"):
+        EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+        try:
+            os.startfile(str(EXPORTS_DIR))
+            return jsonify({"success": True})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    return jsonify({"error": "Local folder opening only available on desktop"}), 400
 
 @app.route("/api/generate", methods=["POST"])
 def api_generate():
@@ -111,7 +119,7 @@ def api_generate():
     bpm_val = int(bpm_override or bp.get("bpm", 130))
     filename = f"{safe_name}_{bpm_val}bpm.als"
 
-    # Automatically save to exports/ folder and rotate oldest when > 5
+    # Save to exports/ with rotation (max 5)
     save_and_rotate_export(filename, als_data)
 
     return send_file(
@@ -130,15 +138,18 @@ def api_import_blueprint():
     import json
     genre = data.get("genre", "Techno").lower().strip()
     target_dir = Path(__file__).parent / "blueprints" / genre
-    target_dir.mkdir(parents=True, exist_ok=True)
+    
+    try:
+        target_dir.mkdir(parents=True, exist_ok=True)
+        safe_id = "".join(c for c in data["id"] if c.isalnum() or c in ("_", "-")).lower()
+        file_path = target_dir / f"{safe_id}.json"
 
-    safe_id = "".join(c for c in data["id"] if c.isalnum() or c in ("_", "-")).lower()
-    file_path = target_dir / f"{safe_id}.json"
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
 
-    with open(file_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-    return jsonify({"success": True, "id": safe_id, "message": f"Blueprint '{data['name']}' saved successfully."})
+        return jsonify({"success": True, "id": safe_id, "message": f"Blueprint '{data['name']}' saved successfully."})
+    except Exception as e:
+        return jsonify({"error": f"Cannot write to filesystem in cloud deployment: {e}"}), 500
 
 if __name__ == "__main__":
     print("Starting Arrangement Pilot on http://localhost:5000 ...")

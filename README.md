@@ -40,12 +40,19 @@ python app.py
 Open your browser at: **`http://localhost:5000`**
 
 ### 2. Ready-to-Open Projects
-Three pre-generated Ableton Live 12 templates are already saved in the project root:
-- `Chlar_Raw_Hypnotic_140bpm.als`
-- `Mulero_Cavernous_Modular_136bpm.als`
-- `Temudo_Clinical_Syncopated_137bpm.als`
+Three pre-generated Ableton Live 12 templates are ready in the `exports/` folder:
+- `exports/Chlar_Raw_Hypnotic_140bpm.als`
+- `exports/Mulero_Cavernous_Modular_136bpm.als`
+- `exports/Temudo_Clinical_Syncopated_137bpm.als`
 
 Double-click any `.als` file to open it directly in Ableton Live 12!
+
+### 3. Deploy to the Web (Vercel)
+This repository is pre-configured for **1-click Vercel deployment**:
+1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account.
+2. Click **Add New... → Project**.
+3. Select your `arrangement-pilot` repository and click **Deploy**.
+4. In under 60 seconds, your app will be live at a public URL (e.g. `https://arrangement-pilot.vercel.app`)!
 
 ---
 
