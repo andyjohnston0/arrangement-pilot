@@ -1,0 +1,175 @@
+{
+  "id": "raw_modular_temudo",
+  "name": "Clinical Syncopated Modular",
+  "genre": "Techno",
+  "subgenre": "Raw / Hypnotic",
+  "bpm": 137,
+  "time_signature": "4/4",
+  "description": "Precise, clinical, and syncopated modern techno inspired by Temudo, Cravo, and Kwartz. Focuses on dry punchy transients, tight pocket grooves, modular bleep variations, and unexpected rhythmic mutes.",
+  "influences": [
+    "Temudo",
+    "Cravo",
+    "Norbak",
+    "Kwartz",
+    "Hayes Collective"
+  ],
+  "production_guide": {
+    "philosophy": [
+      "Transients are king: In clinical techno, sounds are extremely dry and punchy. Avoid muddy reverb washes; use short room acoustics instead.",
+      "The power of silence: Strategic 1-beat or 2-beat sudden mutes create more impact than a 32-bar white noise riser.",
+      "Syncopation and displacement: Shifting a hi-hat or bleep by 1/32nd note creates an unexpected addictive pocket bounce.",
+      "Modular dialogue: Two short synth motifs that converse with each other in call-and-response."
+    ],
+    "sound_design": {
+      "Tight Boxy Kick": "A shorter, punchier kick drum with prominent 80-120Hz chest punch rather than loose sub boom. Short decay envelope (180ms).",
+      "Clinical Bass Stab": "Mono sawtooth synth with zero attack, 90ms decay, 0% sustain. Live 12 Saturator in Analog Clip mode for bite.",
+      "Modular Call & Response": "Two synth instances: Synth A plays on beats 1.2 and 2.4; Synth B responds on offbeats with pitch modulation.",
+      "Dry Shaker / Rim Pattern": "Ultra-short 808 rimshot or 606 hi-hat with Live 12 Drum Buss (Transient control boosted +2.5 dB)."
+    },
+    "step_by_step_walkthrough": [
+      {
+        "step": 1,
+        "title": "Design Dry Transients & Drum Buss",
+        "detail": "Dial in kick and tight bass stab at 137 BPM. Apply Drum Buss to glue them together with crisp transient punch."
+      },
+      {
+        "step": 2,
+        "title": "Program the Syncopated Percussion Pocket",
+        "detail": "Add short rimshots, dry shakers, and syncopated closed hats. Use groove displacement on the offbeat 16ths."
+      },
+      {
+        "step": 3,
+        "title": "Construct Call-and-Response Modular Hooks",
+        "detail": "Program two modular bleep channels that converse back and forth across 2 bars. Keep them short, percussive, and punchy."
+      },
+      {
+        "step": 4,
+        "title": "Arrange with Sharp Surgical Mutes",
+        "detail": "Follow the generated locators: DJ Intro (32 bars), Pocket Build (32 bars), Clinical Peak 1 (48 bars), Sudden Mute / Tension (16 bars), Peak 2 (64 bars), Outro (32 bars)."
+      },
+      {
+        "step": 5,
+        "title": "Mixdown & Dynamic Precision",
+        "detail": "Ensure high dynamic contrast. Use surgical EQ cuts to keep the 200-500Hz range sparkling clean."
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "name": "Tight Kick",
+      "color": 11,
+      "annotation": "Punchy, dry, short decay 909/808 hybrid. Strong punch at 90Hz."
+    },
+    {
+      "name": "Clinical Bass",
+      "color": 17,
+      "annotation": "Tight syncopated bass stab. Zero sustain, fast decay."
+    },
+    {
+      "name": "Dry Closed Hat",
+      "color": 21,
+      "annotation": "Extremely short decay hat with syncopated 16th velocity."
+    },
+    {
+      "name": "Syncopated Rim",
+      "color": 31,
+      "annotation": "Acoustic/electronic rimshot hitting on syncopated pocket beats."
+    },
+    {
+      "name": "Modular Synth A",
+      "color": 40,
+      "annotation": "Main clinical bleep sequence (Call). Fast FM modulation."
+    },
+    {
+      "name": "Modular Synth B",
+      "color": 42,
+      "annotation": "Secondary syncopated response synth. Contrasting pitch/timbre."
+    },
+    {
+      "name": "Subtle Noise Wash",
+      "color": 50,
+      "annotation": "Short room reverb bursts and subtle noise gates for atmosphere."
+    },
+    {
+      "name": "Transition Mutes",
+      "color": 62,
+      "annotation": "Stutter edits, tape stops, and sharp transitional impacts."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Clinical DJ Intro (32 bars)",
+      "bars": 32,
+      "description": "Tight kick, syncopated rim, and subtle bass pulse for instant mixing.",
+      "active_tracks": [
+        "Tight Kick",
+        "Clinical Bass",
+        "Dry Closed Hat",
+        "Syncopated Rim"
+      ]
+    },
+    {
+      "name": "Pocket Incline (32 bars)",
+      "bars": 32,
+      "description": "Modular Synth A enters; percussion velocity builds with micro-swing.",
+      "active_tracks": [
+        "Tight Kick",
+        "Clinical Bass",
+        "Dry Closed Hat",
+        "Syncopated Rim",
+        "Modular Synth A"
+      ]
+    },
+    {
+      "name": "Clinical Peak 1 (48 bars)",
+      "bars": 48,
+      "description": "Both Modular Synth A & B engage in rapid call-and-response. Pure dancefloor momentum.",
+      "active_tracks": [
+        "Tight Kick",
+        "Clinical Bass",
+        "Dry Closed Hat",
+        "Syncopated Rim",
+        "Modular Synth A",
+        "Modular Synth B",
+        "Subtle Noise Wash"
+      ]
+    },
+    {
+      "name": "Surgical Tension Breather (16 bars)",
+      "bars": 16,
+      "description": "Sudden kick drop. Dry modular conversation continues in isolated space with sudden stutter edits.",
+      "active_tracks": [
+        "Dry Closed Hat",
+        "Modular Synth A",
+        "Modular Synth B",
+        "Transition Mutes"
+      ]
+    },
+    {
+      "name": "Full Clinical Climax (64 bars)",
+      "bars": 64,
+      "description": "Kick and bass return with full authority. All elements active with maximum groove precision.",
+      "active_tracks": [
+        "Tight Kick",
+        "Clinical Bass",
+        "Dry Closed Hat",
+        "Syncopated Rim",
+        "Modular Synth A",
+        "Modular Synth B",
+        "Subtle Noise Wash",
+        "Transition Mutes"
+      ]
+    },
+    {
+      "name": "DJ Outro (32 bars)",
+      "bars": 32,
+      "description": "Synths step back; rhythmic skeleton remains for clean DJ transition out.",
+      "active_tracks": [
+        "Tight Kick",
+        "Clinical Bass",
+        "Dry Closed Hat",
+        "Syncopated Rim"
+      ]
+    }
+  ]
+}

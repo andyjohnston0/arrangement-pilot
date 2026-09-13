@@ -1,0 +1,214 @@
+{
+  "id": "raw_hypnotic_chlar",
+  "name": "Driving Polyrhythmic Hypnotic",
+  "genre": "Techno",
+  "subgenre": "Raw / Hypnotic",
+  "bpm": 140,
+  "time_signature": "4/4",
+  "description": "Fast-paced, relentless groove with driving 16th-note swing, polyrhythmic percussion, continuous forward momentum, and subtle modular tension shifts.",
+  "influences": [
+    "Chlar",
+    "Alarico",
+    "Phil Berg",
+    "Mutual Rytm"
+  ],
+  "production_guide": {
+    "philosophy": [
+      "Groove through micro-variation, not giant EDM drops. The tension comes from subtle modulation, filter sweeps, and polyrhythmic phase shifts.",
+      "Never cut the kick for longer than 4 to 8 bars; the low-end momentum is sacred in raw hypnotic club sets.",
+      "Use 5/16, 7/16, or 3/8 polyrhythmic loops across the 4/4 grid to create a rotating hypnotic illusion that keeps dancers locked in.",
+      "Mix with dynamic range: let percussion transients punch through while saturating mid-range synths and gluing with cavernous reverb sends."
+    ],
+    "sound_design": {
+      "Kick & Rumble Foundation": "Use a 909-style punchy kick with a fast pitch decay. Split the signal: Keep the direct transient dry and punchy. Send a duplicate into Live 12 Hybrid Reverb (Dark Cavern / Hall, 100% wet, 2s decay), follow with Live 12 Saturator/Drive, narrow the stereo image below 100Hz with Utility (Bass Mono), and sidechain duck it heavily to the clean kick transient.",
+      "Modular FM Bleep Riff": "Load Live 12 Drift or Operator (FM algorithm). Set Carrier and Modulator to 1:1 or 1:2 harmonic ratio. Add a snappy envelope with 12ms attack and 80ms decay to the modulation index and filter cutoff. Map Live 12 LFO (slow random wave, 0.05 Hz) to subtly modulate decay length so the sequence lives and breathes over 64 bars.",
+      "Polyrhythmic Percussion": "Program a syncopated tom or metallic bongo pattern. Set the MIDI clip length or Live 12 Step Sequencer to 5/16 or 7/16 instead of 4/4. This ensures the accents hit on different beats of every bar, avoiding ear fatigue.",
+      "Driving Ride & 16th Hats": "Closed 16th hats with Live Groove Pool (MPC 16 Swing 55% or SP1200). Inject an aggressive, slightly distorted 909 Ride cymbal with alternating velocities (105 on off-beats, 85 on ghost notes) to propel the peak sections."
+    },
+    "step_by_step_walkthrough": [
+      {
+        "step": 1,
+        "title": "Establish the 140 BPM Low-End Anchor",
+        "detail": "Set project tempo to 140 BPM. Dial in your clean punchy kick on 4-to-the-floor. Build the sub-rumble chain with sidechain compression. Ensure kick and rumble sit at -8 dB to leave 8 dB of headroom for the rest of the mix."
+      },
+      {
+        "step": 2,
+        "title": "Build the Polyrhythmic Percussion Engine",
+        "detail": "Add the 16th rolling hats with subtle swing. Layer the 5/16 polyrhythm perc. Solo the kick and perc: you should already feel an infectious, unyielding dancefloor bounce before adding any melodic elements."
+      },
+      {
+        "step": 3,
+        "title": "Design the Modular Hook & Modulation Macro",
+        "detail": "Create a 2-bar or 4-bar repetitive hypnotic synth loop. Group it with an Auto Filter and Saturator. Map Filter Cutoff, Resonance, and Reverb Send to Macro knobs. Test sweeping these macros\u2014this will drive the energy in the arrangement."
+      },
+      {
+        "step": 4,
+        "title": "Lay Down the Arrangement Blueprint",
+        "detail": "Follow the generated Ableton locators. Keep the DJ Intro stripped to Kick + Sub + Low Perc for 32 bars. Gradually phase in the modular groove in Groove Incline. Reach maximum intensity at Hypnotic Peak (bars 97-160). Use the Filter Pit breakdown for a brief 16-bar tension breather before the final driving sprint."
+      },
+      {
+        "step": 5,
+        "title": "Micro-Automations & DJ Transition Signposts",
+        "detail": "Add white noise sweeps, reverse cymbals, or single-bar drum mutes at the last bar of each 16-bar block (e.g., bar 32, 64, 96, 176) to signal phrase transitions to the DJ."
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "name": "Kick",
+      "color": 13,
+      "annotation": "909 Punch Kick. Tuned to track fundamental (e.g. F1). Fast decay, clean transient."
+    },
+    {
+      "name": "Sub Rumble",
+      "color": 14,
+      "annotation": "Reverberated/saturated sub rumble sidechained to Kick. Mono below 100Hz."
+    },
+    {
+      "name": "Closed Hats",
+      "color": 22,
+      "annotation": "Rolling 16th hats with 54-56% swing. Accent on upbeats."
+    },
+    {
+      "name": "Open Hat 909",
+      "color": 25,
+      "annotation": "Classic 909 open hat on the offbeats (& of every beat). Tight decay."
+    },
+    {
+      "name": "Driving Ride",
+      "color": 27,
+      "annotation": "Distorted 909 ride cymbal on 16ths. Drives the main peak energy."
+    },
+    {
+      "name": "Polyrhythm Perc",
+      "color": 35,
+      "annotation": "5/16 or 7/16 tom/rim loop. Creates the rotating hypnotic groove."
+    },
+    {
+      "name": "Modular Hook",
+      "color": 41,
+      "annotation": "Fast FM modular bleep arp. Modulate decay and filter cutoff over time."
+    },
+    {
+      "name": "Hypnotic Drone",
+      "color": 45,
+      "annotation": "Deep resonant low-mid drone/texture for cavernous industrial atmosphere."
+    },
+    {
+      "name": "Vocal / Texture",
+      "color": 54,
+      "annotation": "Syncopated raw vocal stab or granular loop, processed through delay."
+    },
+    {
+      "name": "FX & Sweeps",
+      "color": 60,
+      "annotation": "Subtle white noise risers, downshifters, and 1-bar crash impacts."
+    }
+  ],
+  "sections": [
+    {
+      "name": "DJ Intro A (Stripped)",
+      "bars": 32,
+      "description": "Clean DJ mixing tool: Kick, Sub Rumble, and basic hat pulse.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats"
+      ]
+    },
+    {
+      "name": "DJ Intro B (Groove Introduction)",
+      "bars": 32,
+      "description": "Introduce polyrhythm percussion and low-filtered modular bleeps.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats",
+        "Open Hat 909",
+        "Polyrhythm Perc"
+      ]
+    },
+    {
+      "name": "Groove Incline (Building Tension)",
+      "bars": 32,
+      "description": "Modular hook filters up; driving ride enters; hypnotic drone swells.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats",
+        "Open Hat 909",
+        "Polyrhythm Perc",
+        "Modular Hook",
+        "Hypnotic Drone"
+      ]
+    },
+    {
+      "name": "Hypnotic Peak 1 (Full Groove)",
+      "bars": 64,
+      "description": "Full relentless dancefloor power. All rhythm layers, rides, and modular accents locked in.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats",
+        "Open Hat 909",
+        "Driving Ride",
+        "Polyrhythm Perc",
+        "Modular Hook",
+        "Hypnotic Drone",
+        "Vocal / Texture"
+      ]
+    },
+    {
+      "name": "Filter Pit (Tension Breakdown)",
+      "bars": 16,
+      "description": "Kick drops out or gets high-passed; modular bleeps echo out into cavernous delay; polyrhythms twist.",
+      "active_tracks": [
+        "Closed Hats",
+        "Polyrhythm Perc",
+        "Modular Hook",
+        "Hypnotic Drone",
+        "Vocal / Texture",
+        "FX & Sweeps"
+      ]
+    },
+    {
+      "name": "Final Climax (Peak Sprint)",
+      "bars": 64,
+      "description": "Kick returns with full impact. Maximum saturation, full rides, and screaming filter resonance.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats",
+        "Open Hat 909",
+        "Driving Ride",
+        "Polyrhythm Perc",
+        "Modular Hook",
+        "Hypnotic Drone",
+        "Vocal / Texture",
+        "FX & Sweeps"
+      ]
+    },
+    {
+      "name": "DJ Outro A (Deconstruction)",
+      "bars": 32,
+      "description": "Rides and leads drop; groove strips back to kick, rumble, and modular echoes.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats",
+        "Open Hat 909",
+        "Polyrhythm Perc"
+      ]
+    },
+    {
+      "name": "DJ Outro B (Stripped Out)",
+      "bars": 32,
+      "description": "Kick, sub rumble, and quiet hat pulse for clean transition into the next DJ track.",
+      "active_tracks": [
+        "Kick",
+        "Sub Rumble",
+        "Closed Hats"
+      ]
+    }
+  ]
+}

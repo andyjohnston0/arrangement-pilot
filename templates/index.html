@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrangement Pilot — Ableton Live 12 Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/>
+            <path d="M7 8h10"/>
+            <path d="M7 12h10"/>
+            <path d="M7 16h6"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">ARRANGEMENT PILOT</h1>
+          <span class="brand-subtitle">Ableton Live 12 Blueprint Studio</span>
+        </div>
+      </div>
+
+      <div class="header-status">
+        <span class="status-badge"><span class="status-dot"></span> Live 12 Ready</span>
+        <span class="version-tag">v1.0</span>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <section class="control-panel">
+      <div class="control-group">
+        <label for="genreSelect">Genre</label>
+        <select id="genreSelect" class="styled-select">
+          <option value="ALL">All Genres</option>
+        </select>
+      </div>
+
+      <div class="control-group flex-grow">
+        <label for="blueprintSelect">Arrangement Blueprint</label>
+        <select id="blueprintSelect" class="styled-select"></select>
+      </div>
+
+      <div class="control-group bpm-control">
+        <label for="bpmInput">Tempo (BPM)</label>
+        <div class="bpm-input-wrapper">
+          <input type="number" id="bpmInput" min="60" max="220" step="1" class="styled-input">
+          <button id="resetBpmBtn" class="mini-btn" title="Reset to blueprint default BPM">Default</button>
+        </div>
+      </div>
+
+      <div class="control-group toggle-group">
+        <label>Arrangement Blocks</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="clipsToggle" checked>
+          <span class="slider"></span>
+          <span class="toggle-label" id="toggleLabelText">Colored Clips</span>
+        </label>
+      </div>
+
+      <div class="control-group action-group">
+        <button id="generateBtn" class="primary-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" x2="12" y1="15" y2="3"/>
+          </svg>
+          Export Ableton 12 (.als)
+        </button>
+      </div>
+    </section>
+
+    <!-- Meta Info Strip -->
+    <div class="blueprint-summary" id="blueprintSummary">
+      <div class="summary-item">
+        <span class="summary-label">Subgenre</span>
+        <span class="summary-value" id="metaSubgenre">-</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Total Duration</span>
+        <span class="summary-value" id="metaDuration">-</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Total Bars</span>
+        <span class="summary-value" id="metaBars">-</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Tracks</span>
+        <span class="summary-value" id="metaTracks">-</span>
+      </div>
+      <div class="summary-item wide">
+        <span class="summary-label">Sonic Influences</span>
+        <span class="summary-value influences-tags" id="metaInfluences">-</span>
+      </div>
+    </div>
+
+    <!-- Main Visualizer: Arrangement Timeline -->
+    <section class="visualizer-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2 class="section-title">Timeline Arrangement Blueprint</h2>
+          <span class="section-note">Ableton 12 Locators & Phrase Architecture</span>
+        </div>
+        <div class="timeline-legend">
+          <span class="legend-item"><span class="legend-color c-intro"></span> Intro / Outro</span>
+          <span class="legend-item"><span class="legend-color c-build"></span> Incline / Build</span>
+          <span class="legend-item"><span class="legend-color c-peak"></span> Main Peak / Climax</span>
+          <span class="legend-item"><span class="legend-color c-break"></span> Breakdown / Pit</span>
+        </div>
+      </div>
+
+      <!-- Linear Timeline Blocks -->
+      <div class="timeline-container" id="timelineBlocks"></div>
+
+      <!-- Multi-Track Activity Grid -->
+      <div class="track-matrix-wrapper">
+        <h3 class="subsection-title">Track Presence Matrix</h3>
+        <div class="track-matrix" id="trackMatrix"></div>
+      </div>
+    </section>
+
+    <!-- Interactive Tabs: Production Walkthrough & Sound Design -->
+    <section class="tabs-section">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="tab-walkthrough">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Production Walkthrough & Guide
+        </button>
+        <button class="tab-btn" data-tab="tab-sound-design">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+          Sound Design Recipes
+        </button>
+        <button class="tab-btn" data-tab="tab-tracks">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Track List & Ableton Info View Tips
+        </button>
+        <button class="tab-btn" data-tab="tab-agent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          AI Agent / Custom Blueprint Ingestor
+        </button>
+      </div>
+
+      <!-- Tab 1: Step-by-Step Production Guide -->
+      <div id="tab-walkthrough" class="tab-pane active">
+        <div class="guide-container">
+          <div class="guide-column">
+            <h3 class="pane-title">Key Philosophy & Sonic Identity</h3>
+            <div id="philosophyList" class="philosophy-cards"></div>
+          </div>
+          <div class="guide-column">
+            <h3 class="pane-title">Step-by-Step Production Walkthrough</h3>
+            <div id="walkthroughList" class="timeline-steps"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Sound Design Recipes -->
+      <div id="tab-sound-design" class="tab-pane">
+        <div class="recipes-grid" id="soundDesignGrid"></div>
+      </div>
+
+      <!-- Tab 3: Track Breakdown & Ableton Annotations -->
+      <div id="tab-tracks" class="tab-pane">
+        <div class="tracks-table-wrap">
+          <table class="tracks-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Color</th>
+                <th style="width: 220px;">Track Name</th>
+                <th>In-DAW Ableton Live Info View Tip</th>
+              </tr>
+            </thead>
+            <tbody id="tracksTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 4: AI Agent / Ingestor -->
+      <div id="tab-agent" class="tab-pane">
+        <div class="agent-pane">
+          <div class="agent-intro">
+            <h3>Custom Blueprint Ingestor</h3>
+            <p>Paste an arrangement blueprint in JSON format below, or let an AI agent extract track arrangement timings from song breakdowns to save them into your library.</p>
+          </div>
+          <textarea id="blueprintJsonInput" class="agent-json-input" placeholder='Paste arrangement JSON schema here...'></textarea>
+          <div class="agent-actions">
+            <button id="importBlueprintBtn" class="primary-btn">Validate & Import to Library</button>
+            <button id="loadTemplateBtn" class="secondary-btn" type="button">Load Blueprint Schema Example</button>
+            <span id="importStatusMsg" class="status-msg"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

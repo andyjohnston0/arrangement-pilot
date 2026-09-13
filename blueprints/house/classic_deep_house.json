@@ -1,0 +1,167 @@
+{
+  "id": "classic_deep_house",
+  "name": "Classic Deep & Soulful House",
+  "genre": "House",
+  "subgenre": "Deep House",
+  "bpm": 124,
+  "time_signature": "4/4",
+  "description": "Warm, soulful, and swinging deep house inspired by Larry Heard, Frankie Knuckles, and Kerri Chandler. Features classic Rhodes chords, warm FM bass, and 909/707 swing drums.",
+  "influences": [
+    "Larry Heard",
+    "Kerri Chandler",
+    "Frankie Knuckles",
+    "Masters at Work"
+  ],
+  "production_guide": {
+    "philosophy": [
+      "Warmth, soul, and human swing: Deep house is about emotional chord progressions, warm analog saturation, and swing percentages of 58-62%.",
+      "The groove is in the bass and hi-hats: An infectious round bassline playing around the kick drum.",
+      "Lush chord voicings: Minor 7th, 9th, and 11th chords played with velocity sensitivity on vintage electric pianos."
+    ],
+    "sound_design": {
+      "Warm Round Kick": "Deep, pillowy 909 or 808 kick drum with soft tape saturation.",
+      "Classic House Bass": "Warm FM Lately Bass or Juno square bass. Melodic, walking or syncopated.",
+      "Rhodes Chords": "Electric piano / Rhodes routed through chorus and subtle spring reverb.",
+      "909 Open Hat & Shaker": "Lush swinging 909 open hats on the offbeat with 16th shaker loops for continuous momentum."
+    },
+    "step_by_step_walkthrough": [
+      {
+        "step": 1,
+        "title": "Dial in 124 BPM & House Swing",
+        "detail": "Set project tempo to 124 BPM. Load swing grooves (MPC 16 Swing 58%) on all percussion."
+      },
+      {
+        "step": 2,
+        "title": "Lay Down the Chord Progression",
+        "detail": "Play or program a 4-chord soulful minor progression using electric piano or warm pads."
+      },
+      {
+        "step": 3,
+        "title": "Formulate the Melodic Bassline",
+        "detail": "Write a warm round bassline that weaves between the kick hits and locks into the chords."
+      },
+      {
+        "step": 4,
+        "title": "Arrange the Warm Dynamic Journey",
+        "detail": "Follow the locators: DJ Intro (32 bars), Chord Incline (32 bars), Main Groove (64 bars), Soul Breakdown (32 bars), Climax (64 bars), Outro (32 bars)."
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "name": "House Kick",
+      "color": 10,
+      "annotation": "Warm, round 909/808 kick. Gentle low-end punch."
+    },
+    {
+      "name": "Deep Bass",
+      "color": 15,
+      "annotation": "Warm FM Lately Bass or Juno square bass. Melodic groove."
+    },
+    {
+      "name": "Snare & Claps",
+      "color": 20,
+      "annotation": "Layered 909 clap and vintage snare on beats 2 and 4."
+    },
+    {
+      "name": "Swinging Hats",
+      "color": 26,
+      "annotation": "16th swinging hats with 58-60% MPC swing."
+    },
+    {
+      "name": "Rhodes / Keys",
+      "color": 39,
+      "annotation": "Soulful electric piano chords (min7, min9, min11)."
+    },
+    {
+      "name": "Warm String Pad",
+      "color": 46,
+      "annotation": "Lush analog synth strings for emotional depth in breakdown."
+    },
+    {
+      "name": "Percussion & Congas",
+      "color": 32,
+      "annotation": "Live or sampled congas and shakers for human feel."
+    },
+    {
+      "name": "Vocal Hook / Chants",
+      "color": 53,
+      "annotation": "Soulful vocal sample with vintage plate reverb."
+    }
+  ],
+  "sections": [
+    {
+      "name": "DJ Intro (32 bars)",
+      "bars": 32,
+      "description": "Kick, congas, and swinging hats for smooth DJ blending.",
+      "active_tracks": [
+        "House Kick",
+        "Swinging Hats",
+        "Percussion & Congas"
+      ]
+    },
+    {
+      "name": "Chord Incline (32 bars)",
+      "bars": 32,
+      "description": "Bass enters along with subtle Rhodes chords and snare claps.",
+      "active_tracks": [
+        "House Kick",
+        "Deep Bass",
+        "Snare & Claps",
+        "Swinging Hats",
+        "Rhodes / Keys",
+        "Percussion & Congas"
+      ]
+    },
+    {
+      "name": "Main Soul Groove (64 bars)",
+      "bars": 64,
+      "description": "Full warmth: complete bassline, lush keys, vocal hooks, and swinging percussion.",
+      "active_tracks": [
+        "House Kick",
+        "Deep Bass",
+        "Snare & Claps",
+        "Swinging Hats",
+        "Rhodes / Keys",
+        "Percussion & Congas",
+        "Vocal Hook / Chants"
+      ]
+    },
+    {
+      "name": "Soul Breakdown (32 bars)",
+      "bars": 32,
+      "description": "Drums strip back; warm string pad and emotional Rhodes chords take center stage.",
+      "active_tracks": [
+        "Rhodes / Keys",
+        "Warm String Pad",
+        "Percussion & Congas",
+        "Vocal Hook / Chants"
+      ]
+    },
+    {
+      "name": "Full Climax (64 bars)",
+      "bars": 64,
+      "description": "Drums kick back in with maximum soul and energy. All elements playing harmoniously.",
+      "active_tracks": [
+        "House Kick",
+        "Deep Bass",
+        "Snare & Claps",
+        "Swinging Hats",
+        "Rhodes / Keys",
+        "Warm String Pad",
+        "Percussion & Congas",
+        "Vocal Hook / Chants"
+      ]
+    },
+    {
+      "name": "DJ Outro (32 bars)",
+      "bars": 32,
+      "description": "Chords fade out; kick, congas, and hats finish the track for easy mixing.",
+      "active_tracks": [
+        "House Kick",
+        "Swinging Hats",
+        "Percussion & Congas"
+      ]
+    }
+  ]
+}

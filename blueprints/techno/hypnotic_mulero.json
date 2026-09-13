@@ -1,0 +1,177 @@
+{
+  "id": "hypnotic_mulero",
+  "name": "Cavernous Hypnotic Modular",
+  "genre": "Techno",
+  "subgenre": "Raw / Hypnotic",
+  "bpm": 136,
+  "time_signature": "4/4",
+  "description": "Dark, deep, and cavernous hypnotic techno inspired by Oscar Mulero and Lewis Fautzi. Features heavy industrial rumble, shifting modular textures, metallic percussions, and slow tectonic filter builds.",
+  "influences": [
+    "Oscar Mulero",
+    "Lewis Fautzi",
+    "Developer",
+    "PoleGroup",
+    "Warm Up Recordings"
+  ],
+  "production_guide": {
+    "philosophy": [
+      "Darkness as a canvas: The vibe is claustrophobic, deep, and cavernous. Space and reverb decays define the environment.",
+      "Tectonic evolution: Sounds morph slowly over 32 and 64 bars. Use complex automation envelopes on bandpass filters and feedback delay.",
+      "Metallic micro-rhythms: Anodized, industrial clangs and short metallic resonances create alien syncopation above the rolling sub.",
+      "Low-end pressure: Deep sub-heavy rumble tuned to D1 or Eb1 that moves physical air without masking kick punch."
+    ],
+    "sound_design": {
+      "Tectonic Rolling Sub": "Tune an 808/909 kick to D1. Send the tail through Live 12 Roar or Saturator with gentle drive. Low-pass filter at 110Hz with 24dB slope. Add a sidechain compressor keyed to the kick click so the sub swells between the four beats.",
+      "Resonant Modular Drones": "Take an analog sawtooth wave (Live 12 Drift or Wavetable). Run through a steep Bandpass filter with high resonance. Use Live 12 Shifter with slight frequency modulation to create dark eerie undertones.",
+      "Metallic Percussion / Clangs": "Synthesize a metallic ping using Operator (Frequency Modulation) or physical modeling (Live 12 Tension/Collision). Keep decay below 120ms. Route into an Echoboy or Live Delay set to dotted 16ths with ping-pong feedback.",
+      "Cavernous Reverb Send": "Set up a dedicated Return Track with Live 12 Hybrid Reverb (Convolution: Cavern / Abandoned Tunnel, Algorithmic: Shimmer/Dark). High-pass at 250Hz, low-pass at 6kHz. Send small amounts of hats, clangs, and modular bleeps to submerge them."
+    },
+    "step_by_step_walkthrough": [
+      {
+        "step": 1,
+        "title": "Establish the Cavernous Low-End Anchor",
+        "detail": "Set BPM to 136. Create a tight, clinical kick transient and sculpt the rolling sub-bass swell. Verify phase alignment with utility mono bass enabled."
+      },
+      {
+        "step": 2,
+        "title": "Craft the Modular Atmosphere Drone",
+        "detail": "Create a slow-evolving 32-bar drone using Drift or Wavetable. Route cutoff to an LFO running at 1/32D. This serves as the dark bed throughout the entire track."
+      },
+      {
+        "step": 3,
+        "title": "Layer Metallic Syncopation",
+        "detail": "Program two distinct metallic percussion channels. Pan one slightly left (15L) and one right (18R). Apply random velocity and subtle micro-timing delays."
+      },
+      {
+        "step": 4,
+        "title": "Execute the Tectonic Arrangement",
+        "detail": "Follow the locators: maintain a deep 64-bar hypnotic foundation before introducing the main modular riff. Use the 32-bar cavernous breakdown to strip the sub, letting the spatial reverberations dominate before the drop."
+      },
+      {
+        "step": 5,
+        "title": "Final Polish & Spatial Balance",
+        "detail": "Check mono compatibility. Ensure cavernous reverb sends do not clutter the 200-400Hz muddy frequency region."
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "name": "Kick",
+      "color": 12,
+      "annotation": "Punchy, dry, short decay. Tuned to D1. Serves as clock."
+    },
+    {
+      "name": "Tectonic Sub",
+      "color": 14,
+      "annotation": "Heavy rolling sub rumble. High-cut at 110Hz, sidechained to kick."
+    },
+    {
+      "name": "Cavern Hat",
+      "color": 20,
+      "annotation": "Dark, filtered 16th hats with slight swing and high-frequency roll-off."
+    },
+    {
+      "name": "Metallic Clang",
+      "color": 24,
+      "annotation": "FM synthesized metallic hits with dotted 16th ping-pong delay."
+    },
+    {
+      "name": "Modular Texture",
+      "color": 38,
+      "annotation": "Slow evolving modular resonant sequence with bandpass automation."
+    },
+    {
+      "name": "Industrial Drone",
+      "color": 43,
+      "annotation": "Cavernous low-mid ambient drone providing tension and depth."
+    },
+    {
+      "name": "Perc Polyrhythm",
+      "color": 48,
+      "annotation": "Syncopated percussion loop operating in odd meter for hypnotic pull."
+    },
+    {
+      "name": "Rumble FX",
+      "color": 61,
+      "annotation": "Sub drops, filtered noise impacts, and cavernous transition sweeps."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Atmospheric Intro (64 bars)",
+      "bars": 64,
+      "description": "Deep sub rumble, kick, and industrial drone emerge. Essential DJ mix-in foundation.",
+      "active_tracks": [
+        "Kick",
+        "Tectonic Sub",
+        "Cavern Hat",
+        "Industrial Drone"
+      ]
+    },
+    {
+      "name": "Groove Evolution (32 bars)",
+      "bars": 32,
+      "description": "Metallic clangs and polyrhythmic percussion layer in; drone modulation accelerates.",
+      "active_tracks": [
+        "Kick",
+        "Tectonic Sub",
+        "Cavern Hat",
+        "Metallic Clang",
+        "Industrial Drone",
+        "Perc Polyrhythm"
+      ]
+    },
+    {
+      "name": "Hypnotic Deep Peak (64 bars)",
+      "bars": 64,
+      "description": "Main modular sequence is unleashed. Full low-end power and relentless cavernous momentum.",
+      "active_tracks": [
+        "Kick",
+        "Tectonic Sub",
+        "Cavern Hat",
+        "Metallic Clang",
+        "Modular Texture",
+        "Industrial Drone",
+        "Perc Polyrhythm"
+      ]
+    },
+    {
+      "name": "Cavern Breakdown (32 bars)",
+      "bars": 32,
+      "description": "Kick and sub drop out. Reverbs expand, modular filter opens wide, creating immense spatial tension.",
+      "active_tracks": [
+        "Cavern Hat",
+        "Metallic Clang",
+        "Modular Texture",
+        "Industrial Drone",
+        "Rumble FX"
+      ]
+    },
+    {
+      "name": "Second Descent Climax (64 bars)",
+      "bars": 64,
+      "description": "Kick and tectonic sub smash back in. Maximum saturation, full stereo depth and percussion.",
+      "active_tracks": [
+        "Kick",
+        "Tectonic Sub",
+        "Cavern Hat",
+        "Metallic Clang",
+        "Modular Texture",
+        "Industrial Drone",
+        "Perc Polyrhythm",
+        "Rumble FX"
+      ]
+    },
+    {
+      "name": "Deconstruction Outro (64 bars)",
+      "bars": 64,
+      "description": "Modular sequence filters away; strips down to kick, sub, and dark hat pulse for DJ out-mix.",
+      "active_tracks": [
+        "Kick",
+        "Tectonic Sub",
+        "Cavern Hat",
+        "Industrial Drone"
+      ]
+    }
+  ]
+}
