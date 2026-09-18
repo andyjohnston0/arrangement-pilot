@@ -459,7 +459,6 @@ async function handleExport() {
   } catch (err) {
     console.error('Export request failed:', err);
     alert('Export error: ' + (err.message || 'Check console.'));
-  }
   } finally {
     generateBtn.disabled = false;
     generateBtn.innerHTML = originalBtnHtml;
