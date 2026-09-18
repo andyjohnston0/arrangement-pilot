@@ -428,23 +428,38 @@ async function handleExport() {
     });
 
     if (!response.ok) {
-      const err = await response.json();
-      alert('Export failed: ' + (err.error || 'Server error'));
+      let errorMsg = `Server error (${response.status})`;
+      try {
+        const err = await response.json();
+        if (err && err.error) errorMsg = err.error;
+      } catch (_) {
+        const text = await response.text();
+        if (text) errorMsg = text.slice(0, 120);
+      }
+      alert('Export failed: ' + errorMsg);
       return;
     }
 
     const blob = await response.blob();
+    const filename = `${currentBlueprint.id}_${Math.round(bpm)}bpm.als`;
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
+    a.style.display = 'none';
     a.href = url;
-    a.download = `${currentBlueprint.id}_${Math.round(bpm)}bpm.als`;
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
+
+    // Retain blob URL in memory for 60 seconds so Safari, iOS, and mobile browsers
+    // have ample time to stream and write the file before memory cleanup
+    setTimeout(() => {
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }, 60000);
   } catch (err) {
     console.error('Export request failed:', err);
-    alert('Export error. Check console.');
+    alert('Export error: ' + (err.message || 'Check console.'));
+  }
   } finally {
     generateBtn.disabled = false;
     generateBtn.innerHTML = originalBtnHtml;
